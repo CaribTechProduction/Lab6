@@ -70,14 +70,12 @@ void subtractMatrices(int **matrix1, int **matrix2, int **result, int size)
 // Function to update an element of the first matrix after checking validity of row and column
 void updateElement(int **matrix, int size, int row, int col, int newValue)
 {
-    if (row >= 0 && row < size && col >= 0 && col < size)
+    if (row < 0 || row >= size || col < 0 || col >= size)
     {
-        matrix[row][col] = newValue;
+        throw std::out_of_range("Invalid row or column.");
     }
-    else
-    {
-        std::cerr << "Invalid row or column." << std::endl;
-    }
+
+    matrix[row][col] = newValue;
 }
 
 // Function to get the max value of the first matrix
