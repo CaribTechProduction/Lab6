@@ -67,10 +67,17 @@ void subtractMatrices(int **matrix1, int **matrix2, int **result, int size)
     }
 }
 
-// Function to update an element of the first matrix
-void updateElement(int **matrix, int row, int col, int newValue)
+// Function to update an element of the first matrix after checking validity of row and column
+void updateElement(int **matrix, int size, int row, int col, int newValue)
 {
-    matrix[row][col] = newValue;
+    if (row >= 0 && row < size && col >= 0 && col < size)
+    {
+        matrix[row][col] = newValue;
+    }
+    else
+    {
+        std::cerr << "Invalid row or column." << std::endl;
+    }
 }
 
 // Function to get the max value of the first matrix
@@ -149,7 +156,7 @@ int main()
     std::cout << "\nMatrix 1 - Matrix 2:" << std::endl;
     printMatrix(result, size);
 
-    updateElement(matrix1, 1, 1, 99);
+    updateElement(matrix1, size, 1, 2, 99);
     std::cout << "\nUpdated Matrix 1:" << std::endl;
     printMatrix(matrix1, size);
 
